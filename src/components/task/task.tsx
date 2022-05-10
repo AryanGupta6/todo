@@ -9,16 +9,22 @@ interface prop{
     checked: boolean
     id: number
     handleDelete:any
+    handlecheckbox:any
 }
 const Task = (props :prop )=> {
     const [valueref,setvalueref]=React.useState(props.value)
+    const [compref,setcompref]=React.useState(props.checked)
+
     React.useEffect(()=>{
         setvalueref(props.value)
     },[props.value])
+    React.useEffect(()=>{
+        setcompref(props.checked)
+    },[props.checked])
     return (
         <div className='task'>
 
-        <input type="checkbox" className='box' checked={props.checked}>
+        <input type="checkbox" className='box' checked={compref} onClick={()=>{props.handlecheckbox(props.id)}}>
         </input>
         {/* <input type="text" defaultValue={props.value} onKeyPress={e=>{e.key==='Enter'&& props.handleValue(e)}}> 
 

@@ -41,6 +41,7 @@ export const counterSlice = createSlice({
         console.log(state.arr)
         // state.arr.push({task:action.payload,completed:false})
     },
+    
     editinarray: (state, action: PayloadAction< {index:number, value :any}>) => {
         console.log("hit2")
         const prevstate=[...state.arr]
@@ -49,13 +50,27 @@ export const counterSlice = createSlice({
         state.arr=prevstate;
         console.log("inside function")
         console.log(state.arr)
-        }
+        },
+    editcompleted: (state, action: PayloadAction<number>) => {
+        const prevstate=[...state.arr]
+        console.log(action.payload)
+        const a=[...prevstate.slice(0,action.payload),{task:prevstate[action.payload].task,completed:!prevstate[action.payload].completed},...prevstate.slice(action.payload+1,state.arr.length)]
+        state.arr=[...a];
+        console.log(a)
+        console.log(state.arr)
+            // state.arr.push({task:action.payload,completed:false})
+        },    
+    deletecompleted: (state)=>{
+        const prevstate=[...state.arr]
+        const a=prevstate.filter(obj=>!obj.completed)
+        state.arr=[...a]
+    }
         // state.arr.push({task:action.payload,completed:false})
     }
   },
 )
 
 // Action creators are generated for each case reducer function
-export const { addtoarray ,removefromarray,editinarray} = counterSlice.actions
+export const { addtoarray ,removefromarray,editinarray,editcompleted,deletecompleted} = counterSlice.actions
 
 export default counterSlice.reducer
