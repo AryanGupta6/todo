@@ -11,6 +11,7 @@ function App() {
   let arr = useSelector((state: RootState) => state.arr.arr)
   const dispatch = useDispatch()
   const [input,setinput]= useState("")
+  const [select,setselect]=useState(1)
   function onValue(e:any){
       dispatch(addtoarray( e.target.value))
       setinput("");
@@ -31,14 +32,36 @@ function onEdit(index:number , e:any){
   function removechecked(){
     dispatch(deletecompleted())
   };
+
   return (
     <div className="App">
+        <button onClick={()=>setselect(1)}> all</button><button onClick={()=>setselect(2)}>completed</button><button onClick={()=>setselect(3)}>notcompleted</button>
+        <h2>enter task</h2>
         <input value={input} onChange={e=>setinput(e.target.value)} onKeyPress={(e)=>{e.key==='Enter'&& onValue(e) } }></input>
+        {
+        select==1 &&
+        <div>
+
+        <h1>All</h1>
         {arr.map((obj,i)=>{return(<Task key={i} id={i} value={obj.task} handlecheckbox={onCheckbox} handleDelete={onDelete} handleValue={onEdit} checked={obj.completed} />)})}        
+        </div>
+        } 
+        {
+          select==2 &&
+          <div>
+
         <h1>completed</h1>
         {arr.filter(obj=>obj.completed).map((obj,i)=>{return(<Task key={i} id={i} value={obj.task} handlecheckbox={onCheckbox}  handleValue={onEdit} handleDelete={onDelete} checked={obj.completed} />)})}       
-        <h1>not completed</h1> 
-        {arr.filter(obj=>!obj.completed).map((obj,i)=>{return(<Task key={i} id={i} value={obj.task} handlecheckbox={onCheckbox} handleValue={onEdit} handleDelete={onDelete} checked={obj.completed} />)})}        
+        </div>
+        }
+
+        {
+          select==3 &&
+          <div>
+          <h1>not completed</h1> 
+          {arr.filter(obj=>!obj.completed).map((obj,i)=>{return(<Task key={i} id={i} value={obj.task} handlecheckbox={onCheckbox} handleValue={onEdit} handleDelete={onDelete} checked={obj.completed} />)})}        
+          </div>
+        }
         <button onClick={removechecked}>remove checked</button>
     </div>
   );
