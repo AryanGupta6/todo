@@ -1,0 +1,20 @@
+.task{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+.taskinput{
+    width: 50%;
+    height: 150%;
+    font-size: 150%;
+}
+.deletetask{
+    background-color: rgb(192, 190, 190);
+    width: 2.8em;
+    height: 2.8em;
+}
+.box{
+    transform: scale(3);
+    margin: 3%;
+}
