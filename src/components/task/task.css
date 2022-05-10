@@ -1,20 +1,26 @@
 .task{
+    align-self: center;
     display: flex;
     flex-flow: row;
     align-items: center;
     justify-content: center;
+    margin: 1%;
+    width: 100%;
 }
 .taskinput{
-    width: 50%;
+    width: auto;
     height: 150%;
     font-size: 150%;
+    align-self: center;
 }
 .deletetask{
-    background-color: rgb(192, 190, 190);
+    background-color: crimson;
     width: 2.8em;
     height: 2.8em;
+    align-self: center;
 }
 .box{
     transform: scale(3);
     margin: 3%;
+    align-self: center;
 }

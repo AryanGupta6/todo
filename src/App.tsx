@@ -35,9 +35,9 @@ function onEdit(index:number , e:any){
 
   return (
     <div className="App">
-        <button onClick={()=>setselect(1)}> all</button><button onClick={()=>setselect(2)}>completed</button><button onClick={()=>setselect(3)}>notcompleted</button>
+        <button onClick={()=>setselect(1)} className="b1"> all</button><button onClick={()=>setselect(2)} className="b2">completed</button><button onClick={()=>setselect(3)} className="b3">notcompleted</button>
         <h2>enter task</h2>
-        <input value={input} onChange={e=>setinput(e.target.value)} onKeyPress={(e)=>{e.key==='Enter'&& onValue(e) } }></input>
+        <input className="taskval" value={input} onChange={e=>setinput(e.target.value)} onKeyPress={(e)=>{e.key==='Enter'&& onValue(e) } }></input>
         {
         select==1 &&
         <div>
@@ -62,7 +62,7 @@ function onEdit(index:number , e:any){
           {arr.filter(obj=>!obj.completed).map((obj,i)=>{return(<Task key={i} id={i} value={obj.task} handlecheckbox={onCheckbox} handleValue={onEdit} handleDelete={onDelete} checked={obj.completed} />)})}        
           </div>
         }
-        <button onClick={removechecked}>remove checked</button>
+        <button onClick={removechecked} className="delete">remove checked</button>
     </div>
   );
 }

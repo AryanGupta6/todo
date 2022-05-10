@@ -1,6 +1,42 @@
 .App {
   text-align: center;
-  width: 50%;
-  margin: auto;
+  width: 100%;
+  display: flex;
+  padding: auto;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  background-color: bisque;
+  height: 200%;
 }
-
+.b1{
+  background-color:lightskyblue;
+  width: 50%;
+  align-self: center;
+  font-size: 150%;
+  margin: 1%;
+}
+.b2{
+  background-color:darkgreen;
+  font-size: 150%;
+  width: 50%;
+  align-self: center;
+  margin: 1%;
+}
+.b3{
+  background-color: gold;
+  font-size: 150%;
+  width: 50%;
+  align-self: center;
+  margin: 1%;
+}
+.delete{
+  background-color: crimson;
+  font-size: large;
+  width: 50%;
+  align-self: center;
+  margin-bottom: 1%;
+}
+taskval{
+  width: 50%;
+}
