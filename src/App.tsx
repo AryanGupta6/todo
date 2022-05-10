@@ -8,7 +8,7 @@ import { RootState } from './components/redux/store'
 import { setConstantValue } from 'typescript';
 
 function App() {
-  const arr = useSelector((state: RootState) => state.arr.arr)
+  let arr = useSelector((state: RootState) => state.arr.arr)
   const dispatch = useDispatch()
   const [input,setinput]= useState("")
   function onValue(e:any){

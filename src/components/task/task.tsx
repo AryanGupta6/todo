@@ -11,18 +11,19 @@ interface prop{
     handleDelete:any
 }
 const Task = (props :prop )=> {
-    function ju(){
-        console.log(props.id)
-    }
+    const [valueref,setvalueref]=React.useState(props.value)
+    React.useEffect(()=>{
+        setvalueref(props.value)
+    },[props.value])
     return (
         <div className='task'>
 
-        <input type="checkbox" className='box' defaultChecked={props.checked}>
+        <input type="checkbox" className='box' checked={props.checked}>
         </input>
         {/* <input type="text" defaultValue={props.value} onKeyPress={e=>{e.key==='Enter'&& props.handleValue(e)}}> 
 
         </input> */}
-        <input type="text" defaultValue={props.value} onKeyPress={e=>{e.key==='Enter'&& props.handleValue(props.id,e)}}  className="taskinput" >
+        <input type="text" value={valueref} onChange={e=>{setvalueref(e.target.value)}} onKeyPress={e=>{e.key==='Enter'&& props.handleValue(props.id,e)}}  className="taskinput" >
         </input>
         <button className="deletetask" onClick={()=>{props.handleDelete(props.id)}}>X</button>
         </div>  

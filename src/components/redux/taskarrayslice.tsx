@@ -33,10 +33,12 @@ export const counterSlice = createSlice({
         // state.arr.push({task:action.payload,completed:false})
     },
     removefromarray: (state, action: PayloadAction<number>) => {
-        const prevstate=state.arr
+        const prevstate=[...state.arr]
         console.log(action.payload)
-        prevstate.splice(action.payload,1)
-        state.arr=[...prevstate];
+        const a=[...prevstate.slice(0,action.payload),...prevstate.slice(action.payload+1,state.arr.length)]
+        state.arr=[...a];
+        console.log(a)
+        console.log(state.arr)
         // state.arr.push({task:action.payload,completed:false})
     },
     editinarray: (state, action: PayloadAction< {index:number, value :any}>) => {
